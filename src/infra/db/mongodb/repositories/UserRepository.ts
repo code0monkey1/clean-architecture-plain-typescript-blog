@@ -3,20 +3,25 @@ import { LoadUserByEmailIdRepository } from "../../../../application/interfaces/
 import { mapDocument, objectIdToString } from "../helpers/mappers";
 import UserModel from "../models/UserModel";
 
-export class UserRepository implements CreateUserRepository, LoadUserByEmailId {
+export class UserRepository
+    implements CreateUserRepository, LoadUserByEmailIdRepository
+{
     async loadUserByEmail(
         email: LoadUserByEmailIdRepository.Request,
     ): Promise<LoadUserByEmailIdRepository.Response> {
         const user = await UserModel.findOne({ email });
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return user && mapDocument(user);
     }
 
     async createUser(
         userData: CreateUserRepository.Request,
     ): Promise<CreateUserRepository.Response> {
-        const { _id } = await UserModel.create(userData)!;
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const { _id } = await UserModel.create(userData);
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         return objectIdToString(_id);
     }
 }

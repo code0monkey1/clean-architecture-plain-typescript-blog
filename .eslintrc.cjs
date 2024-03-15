@@ -15,4 +15,5 @@ module.exports = {
         "no-console": "error",
         "dot-notation": "error",
     },
+    ignorePatterns: ["test/"],
 };

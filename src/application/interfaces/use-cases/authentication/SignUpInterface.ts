@@ -9,6 +9,7 @@ export interface SignUpInterface
     ): Promise<SignUpInterface.Response>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace SignUpInterface {
     export type Request = Pick<
         User,

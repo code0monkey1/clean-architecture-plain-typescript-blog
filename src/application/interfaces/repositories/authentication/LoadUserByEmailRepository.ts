@@ -6,6 +6,7 @@ export interface LoadUserByEmailIdRepository {
     ): Promise<LoadUserByEmailIdRepository.Response>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace LoadUserByEmailIdRepository {
     export type Request = string;
     export type Response =
